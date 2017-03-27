@@ -5,10 +5,11 @@
 
 package com.threerings.getdown.launcher;
 
+import static com.threerings.getdown.Log.log;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -22,8 +23,6 @@ import com.samskivert.swing.GroupLayout;
 import com.samskivert.swing.Spacer;
 import com.samskivert.swing.VGroupLayout;
 import com.samskivert.text.MessageUtil;
-
-import static com.threerings.getdown.Log.log;
 
 /**
  * Displays a confirmation that the user wants to abort installation.
@@ -73,7 +72,7 @@ public class AbortPanel extends JFrame
     {
         String cmd = e.getActionCommand();
         if (cmd.equals("ok")) {
-            System.exit(0);
+        	_getdown.launch();
         } else {
             setVisible(false);
         }
