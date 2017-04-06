@@ -27,6 +27,7 @@ import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -579,6 +580,9 @@ public abstract class Getdown extends Thread implements Application.StatusDispla
 					msg = MessageUtil.compose("m.missing_resource", MessageUtil.taint(msg), _ifc.installError);
 				} else {
 					msg = MessageUtil.compose("m.init_error", MessageUtil.taint(msg), _ifc.installError);
+					if (e instanceof UnknownHostException) {
+						showConfirmationDialog();
+					}
 				}
 			}
 			// Since we're dead, clear off the 'time remaining' label along with
